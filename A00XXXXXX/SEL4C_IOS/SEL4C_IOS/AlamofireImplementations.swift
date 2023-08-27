@@ -34,8 +34,14 @@ open class AlamofireRequestBuilder<T>: RequestBuilder<T> {
      */
     open func createSessionManager() -> Alamofire.SessionManager {
         let configuration = URLSessionConfiguration.default
+
         configuration.httpAdditionalHeaders = buildHeaders()
-        return Alamofire.SessionManager(configuration: configuration)
+
+        
+        let sessionManager = Alamofire.SessionManager(configuration: configuration)
+        let delegate = sessionManager.delegate
+
+        return sessionManager
     }
 
     /**

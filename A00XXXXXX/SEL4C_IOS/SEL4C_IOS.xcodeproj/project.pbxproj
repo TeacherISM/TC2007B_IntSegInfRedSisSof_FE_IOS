@@ -39,6 +39,8 @@
 		2C354B1C2A94410B0029D2C4 /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C354B042A94410A0029D2C4 /* APIHelper.swift */; };
 		2C354B1D2A94410B0029D2C4 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C354B052A94410B0029D2C4 /* Home.swift */; };
 		2C354B202A9535950029D2C4 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2C354B1F2A9535950029D2C4 /* Alamofire */; };
+		2C354B232A95993A0029D2C4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C354B222A95993A0029D2C4 /* HomeViewController.swift */; };
+		2C354B252A95996B0029D2C4 /* HomeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C354B242A95996B0029D2C4 /* HomeContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +95,8 @@
 		2C354B032A94410A0029D2C4 /* AlamofireImplementations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireImplementations.swift; sourceTree = "<group>"; };
 		2C354B042A94410A0029D2C4 /* APIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
 		2C354B052A94410B0029D2C4 /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		2C354B222A95993A0029D2C4 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		2C354B242A95996B0029D2C4 /* HomeContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +151,8 @@
 				2C354B212A9535CD0029D2C4 /* OpenAPI */,
 				2C354AC42A9440D20029D2C4 /* SEL4C_IOSApp.swift */,
 				2C354AC62A9440D20029D2C4 /* ContentView.swift */,
+				2C354B242A95996B0029D2C4 /* HomeContentView.swift */,
+				2C354B222A95993A0029D2C4 /* HomeViewController.swift */,
 				2C354AC82A9440D40029D2C4 /* Assets.xcassets */,
 				2C354ACA2A9440D40029D2C4 /* Preview Content */,
 			);
@@ -348,6 +354,7 @@
 				2C354B182A94410B0029D2C4 /* Group.swift in Sources */,
 				2C354B0C2A94410B0029D2C4 /* PatchedUser.swift in Sources */,
 				2C354B072A94410B0029D2C4 /* PaginatedHomeList.swift in Sources */,
+				2C354B252A95996B0029D2C4 /* HomeContentView.swift in Sources */,
 				2C354B0A2A94410B0029D2C4 /* PatchedGroup.swift in Sources */,
 				2C354B082A94410B0029D2C4 /* Configuration.swift in Sources */,
 				2C354B142A94410B0029D2C4 /* SEL4C_iOS_Lib.swift in Sources */,
@@ -359,6 +366,7 @@
 				2C354B0E2A94410B0029D2C4 /* JSONEncodingHelper.swift in Sources */,
 				2C354B092A94410B0029D2C4 /* Models.swift in Sources */,
 				2C354AC72A9440D20029D2C4 /* ContentView.swift in Sources */,
+				2C354B232A95993A0029D2C4 /* HomeViewController.swift in Sources */,
 				2C354B0D2A94410B0029D2C4 /* CodableHelper.swift in Sources */,
 				2C354B122A94410B0029D2C4 /* Extensions.swift in Sources */,
 				2C354B0F2A94410B0029D2C4 /* PaginatedUserList.swift in Sources */,

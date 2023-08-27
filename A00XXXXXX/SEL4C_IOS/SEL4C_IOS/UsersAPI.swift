@@ -159,7 +159,14 @@ open class UsersAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     open class func usersList(page: Int? = nil, completion: @escaping ((_ data: PaginatedUserList?,_ error: Error?) -> Void)) {
-        usersListWithRequestBuilder(page: page).execute { (response, error) -> Void in
+        let username = "A00XXXXXX"
+        let password = "password"
+        let loginString = "\(username):\(password)"
+        let loginData = loginString.data(using: .utf8)!
+        let base64LoginString = loginData.base64EncodedString()
+        usersListWithRequestBuilder(page: page)
+            .addHeader(name: "Authorization", value: "Basic \(base64LoginString)")
+            .execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }

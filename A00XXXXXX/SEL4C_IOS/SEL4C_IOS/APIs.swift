@@ -7,8 +7,8 @@
 import Foundation
 
 open class SwaggerClientAPI {
-    public static var basePath = "/"
-    public static var credential: URLCredential?
+    public static var basePath = "http://localhost:8000"
+    public static var credential = URLCredential(user: "A00XXXXXX", password: "password", persistence: .forSession)
     public static var customHeaders: [String:String] = [:]
     public static var requestBuilderFactory: RequestBuilderFactory = AlamofireRequestBuilderFactory()
 }
@@ -40,7 +40,9 @@ open class RequestBuilder<T> {
         }
     }
 
-    open func execute(_ completion: @escaping (_ response: Response<T>?, _ error: Error?) -> Void) { }
+    open func execute(_ completion: @escaping (_ response: Response<T>?, _ error: Error?) -> Void) {
+        
+    }
 
     public func addHeader(name: String, value: String) -> Self {
         if !value.isEmpty {

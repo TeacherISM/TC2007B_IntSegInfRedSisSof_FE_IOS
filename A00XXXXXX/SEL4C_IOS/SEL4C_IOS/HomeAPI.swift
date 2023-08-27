@@ -5,9 +5,9 @@
 // https://github.com/swagger-api/swagger-codegen
 //
 
-import Foundation
-import Alamofire
 
+import Alamofire
+import Foundation
 
 open class HomeAPI {
     /**
@@ -16,7 +16,7 @@ open class HomeAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     open class func homeCreate(body: Home, completion: @escaping ((_ data: Home?,_ error: Error?) -> Void)) {
-        homeCreateWithRequestBuilder(body: body).execute { (response, error) -> Void in
+        homeCreateWithRequestBuilder(body: body).addCredential().execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -48,7 +48,7 @@ open class HomeAPI {
 
 
         let requestBuilder: RequestBuilder<Home>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
-
+        
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
@@ -152,7 +152,15 @@ open class HomeAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     open class func homeList(page: Int? = nil, completion: @escaping ((_ data: PaginatedHomeList?,_ error: Error?) -> Void)) {
-        homeListWithRequestBuilder(page: page).execute { (response, error) -> Void in
+        let username = "A00XXXXXX"
+        let password = "password"
+        let loginString = "\(username):\(password)"
+        let loginData = loginString.data(using: .utf8)!
+        let base64LoginString = loginData.base64EncodedString()
+
+        homeListWithRequestBuilder(page: page)
+            .addHeader(name: "Authorization", value: "Basic \(base64LoginString)")
+            .execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -196,7 +204,7 @@ open class HomeAPI {
 
 
         let requestBuilder: RequestBuilder<PaginatedHomeList>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
-
+        
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
@@ -445,8 +453,11 @@ open class HomeAPI {
 
 
         let requestBuilder: RequestBuilder<Home>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
-
+        
         return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
+    
+    
+    
     
 }
