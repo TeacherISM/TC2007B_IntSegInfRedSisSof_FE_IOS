@@ -10,10 +10,7 @@ import SwiftUI
 
 struct HomeContentView: View {
     var body: some View {
-        NavigationView {
-            HomeViewControllerWrapper()
-                .navigationBarTitle("Home API Demo")
-        }
+        HomeViewControllerWrapper()
     }
 }
 
