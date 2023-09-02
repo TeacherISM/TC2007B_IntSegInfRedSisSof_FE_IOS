@@ -65,9 +65,9 @@ class HomeViewController: UIViewController {
     
     // Example method to create a home
     func createHome() {
-        let newHome = Home(title: "Title", _description: "Description", createdAt: Date())
+        let newHome = PCMaster(procesador: String(), tarjetaGrafica: String(), numVentiladores: Int(), fuentePoder: String(), fechaConsulta: Date())
         
-        HomeAPI.homeCreate(body: newHome) { (response, error) in
+        PCAPI.pCCreate(body: newHome) { (response, error) in
             if let error = error {
                 print("Error creating home: \(error)")
                 return

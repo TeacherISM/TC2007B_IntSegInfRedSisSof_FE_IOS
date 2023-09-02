@@ -8,7 +8,7 @@ import Foundation
 
 open class SwaggerClientAPI {
     public static var basePath = "http://localhost:8000"
-    public static var credential = URLCredential(user: "A00XXXXXX", password: "password", persistence: .forSession)
+    public static var credential = URLCredential(user: "A01661896", password: "password", persistence: .forSession)
     public static var customHeaders: [String:String] = [:]
     public static var requestBuilderFactory: RequestBuilderFactory = AlamofireRequestBuilderFactory()
 }
