@@ -5,18 +5,18 @@
 // https://github.com/swagger-api/swagger-codegen
 //
 
-
-import Alamofire
 import Foundation
+import Alamofire
+
 
 open class HomeAPI {
     /**
 
-     - parameter body: (body)  
+     - parameter body: (body)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func homeCreate(body: Home, completion: @escaping ((_ data: Home?,_ error: Error?) -> Void)) {
-        homeCreateWithRequestBuilder(body: body).addCredential().execute { (response, error) -> Void in
+    open class func homeCreate(body: Car, completion: @escaping ((_ data: Car?,_ error: Error?) -> Void)) {
+        homeCreateWithRequestBuilder(body: body).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -32,37 +32,37 @@ open class HomeAPI {
        - type: apiKey sessionid (QUERY)
        - name: cookieAuth
      - examples: [{contentType=application/json, example={
-  "description" : "description",
-  "created_at" : "2000-01-23T04:56:07.000+00:00",
-  "title" : "title"
+  "created_at" : "2000-01-23",
+  "brand" : "brand",
+  "specifications" : "specifications"
 }}]
-     - parameter body: (body)  
+     - parameter body: (body)
 
-     - returns: RequestBuilder<Home> 
+     - returns: RequestBuilder<Car>
      */
-    open class func homeCreateWithRequestBuilder(body: Home) -> RequestBuilder<Home> {
+    open class func homeCreateWithRequestBuilder(body: Car) -> RequestBuilder<Car> {
         let path = "/home/"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<Home>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
-        
+        let requestBuilder: RequestBuilder<Car>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
 
-     - parameter title2: (form)  
-     - parameter _description2: (form)  
-     - parameter createdAt2: (form)  
-     - parameter title: (form)  
-     - parameter _description: (form)  
-     - parameter createdAt: (form)  
+     - parameter brand2: (form)
+     - parameter specifications2: (form)
+     - parameter createdAt2: (form)
+     - parameter brand: (form)
+     - parameter specifications: (form)
+     - parameter createdAt: (form)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func homeCreate(title2: String, _description2: String, createdAt2: Date, title: String, _description: String, createdAt: Date, completion: @escaping ((_ data: Home?,_ error: Error?) -> Void)) {
-        homeCreateWithRequestBuilder(title2: title2, _description2: _description2, createdAt2: createdAt2, title: title, _description: _description, createdAt: createdAt).execute { (response, error) -> Void in
+    open class func homeCreate(brand2: String, specifications2: String, createdAt2: Date, brand: String, specifications: String, createdAt: Date, completion: @escaping ((_ data: Car?,_ error: Error?) -> Void)) {
+        homeCreateWithRequestBuilder(brand2: brand2, specifications2: specifications2, createdAt2: createdAt2, brand: brand, specifications: specifications, createdAt: createdAt).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -78,34 +78,70 @@ open class HomeAPI {
        - type: apiKey sessionid (QUERY)
        - name: cookieAuth
      - examples: [{contentType=application/json, example={
-  "description" : "description",
-  "created_at" : "2000-01-23T04:56:07.000+00:00",
-  "title" : "title"
+  "created_at" : "2000-01-23",
+  "brand" : "brand",
+  "specifications" : "specifications"
 }}]
-     - parameter title2: (form)  
-     - parameter _description2: (form)  
-     - parameter createdAt2: (form)  
-     - parameter title: (form)  
-     - parameter _description: (form)  
-     - parameter createdAt: (form)  
+     - parameter brand2: (form)
+     - parameter specifications2: (form)
+     - parameter createdAt2: (form)
+     - parameter brand: (form)
+     - parameter specifications: (form)
+     - parameter createdAt: (form)
 
-     - returns: RequestBuilder<Home> 
+     - returns: RequestBuilder<Car>
      */
-    open class func homeCreateWithRequestBuilder(title2: String, _description2: String, createdAt2: Date, title: String, _description: String, createdAt: Date) -> RequestBuilder<Home> {
+    open class func homeCreateWithRequestBuilder(brand2: String, specifications2: String, createdAt2: Date, brand: String, specifications: String, createdAt: Date) -> RequestBuilder<Car> {
         let path = "/home/"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: {})
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<Home>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<Car>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
+    /**
+
+     - parameter brand2: (form)
+     - parameter specifications2: (form)
+     - parameter createdAt2: (form)
+     - parameter brand: (form)
+     - parameter specifications: (form)
+     - parameter createdAt: (form)
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+
+
+
+    /**
+     - POST /home/
+
+     - BASIC:
+       - type: http
+       - name: basicAuth
+     - API Key:
+       - type: apiKey sessionid (QUERY)
+       - name: cookieAuth
+     - examples: [{contentType=application/json, example={
+  "created_at" : "2000-01-23",
+  "brand" : "brand",
+  "specifications" : "specifications"
+}}]
+     - parameter brand2: (form)
+     - parameter specifications2: (form)
+     - parameter createdAt2: (form)
+     - parameter brand: (form)
+     - parameter specifications: (form)
+     - parameter createdAt: (form)
+
+     - returns: RequestBuilder<Car>
+     */
 
     /**
 
-     - parameter _id: (path) A unique integer value identifying this home model. 
+     - parameter _id: (path) A unique integer value identifying this car sale.
      - parameter completion: completion handler to receive the data and the error objects
      */
     open class func homeDestroy(_id: Int, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
@@ -128,9 +164,9 @@ open class HomeAPI {
      - API Key:
        - type: apiKey sessionid (QUERY)
        - name: cookieAuth
-     - parameter _id: (path) A unique integer value identifying this home model. 
+     - parameter _id: (path) A unique integer value identifying this car sale.
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<Void>
      */
     open class func homeDestroyWithRequestBuilder(_id: Int) -> RequestBuilder<Void> {
         var path = "/home/{id}/"
@@ -151,19 +187,19 @@ open class HomeAPI {
      - parameter page: (query) A page number within the paginated result set. (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func homeList(page: Int? = nil, completion: @escaping ((_ data: PaginatedHomeList?,_ error: Error?) -> Void)) {
-        let username = "A00XXXXXX"
-        let password = "password"
-        let loginString = "\(username):\(password)"
-        let loginData = loginString.data(using: .utf8)!
-        let base64LoginString = loginData.base64EncodedString()
+    open class func homeList(page: Int? = nil, completion: @escaping ((_ data: PaginatedCarList?,_ error: Error?) -> Void)) {
+            let username = "A01661894"
+            let password = "jony123"
+            let loginString = "\(username):\(password)"
+            let loginData = loginString.data(using: .utf8)!
+            let base64LoginString = loginData.base64EncodedString()
 
-        homeListWithRequestBuilder(page: page)
-            .addHeader(name: "Authorization", value: "Basic \(base64LoginString)")
-            .execute { (response, error) -> Void in
-            completion(response?.body, error)
+            homeListWithRequestBuilder(page: page)
+                .addHeader(name: "Authorization", value: "Basic \(base64LoginString)")
+                .execute { (response, error) -> Void in
+                completion(response?.body, error)
+            }
         }
-    }
 
 
     /**
@@ -180,20 +216,20 @@ open class HomeAPI {
   "previous" : "http://api.example.org/accounts/?page=2",
   "count" : 123,
   "results" : [ {
-    "description" : "description",
-    "created_at" : "2000-01-23T04:56:07.000+00:00",
-    "title" : "title"
+    "created_at" : "2000-01-23",
+    "brand" : "brand",
+    "specifications" : "specifications"
   }, {
-    "description" : "description",
-    "created_at" : "2000-01-23T04:56:07.000+00:00",
-    "title" : "title"
+    "created_at" : "2000-01-23",
+    "brand" : "brand",
+    "specifications" : "specifications"
   } ]
 }}]
      - parameter page: (query) A page number within the paginated result set. (optional)
 
-     - returns: RequestBuilder<PaginatedHomeList> 
+     - returns: RequestBuilder<PaginatedCarList>
      */
-    open class func homeListWithRequestBuilder(page: Int? = nil) -> RequestBuilder<PaginatedHomeList> {
+    open class func homeListWithRequestBuilder(page: Int? = nil) -> RequestBuilder<PaginatedCarList> {
         let path = "/home/"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
@@ -203,17 +239,17 @@ open class HomeAPI {
         ])
 
 
-        let requestBuilder: RequestBuilder<PaginatedHomeList>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
-        
+        let requestBuilder: RequestBuilder<PaginatedCarList>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
 
-     - parameter _id: (path) A unique integer value identifying this home model. 
+     - parameter _id: (path) A unique integer value identifying this car sale.
      - parameter body: (body)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func homePartialUpdate(_id: Int, body: PatchedHome? = nil, completion: @escaping ((_ data: Home?,_ error: Error?) -> Void)) {
+    open class func homePartialUpdate(_id: Int, body: PatchedCar? = nil, completion: @escaping ((_ data: Car?,_ error: Error?) -> Void)) {
         homePartialUpdateWithRequestBuilder(_id: _id, body: body).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -230,16 +266,16 @@ open class HomeAPI {
        - type: apiKey sessionid (QUERY)
        - name: cookieAuth
      - examples: [{contentType=application/json, example={
-  "description" : "description",
-  "created_at" : "2000-01-23T04:56:07.000+00:00",
-  "title" : "title"
+  "created_at" : "2000-01-23",
+  "brand" : "brand",
+  "specifications" : "specifications"
 }}]
-     - parameter _id: (path) A unique integer value identifying this home model. 
+     - parameter _id: (path) A unique integer value identifying this car sale.
      - parameter body: (body)  (optional)
 
-     - returns: RequestBuilder<Home> 
+     - returns: RequestBuilder<Car>
      */
-    open class func homePartialUpdateWithRequestBuilder(_id: Int, body: PatchedHome? = nil) -> RequestBuilder<Home> {
+    open class func homePartialUpdateWithRequestBuilder(_id: Int, body: PatchedCar? = nil) -> RequestBuilder<Car> {
         var path = "/home/{id}/"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -249,23 +285,23 @@ open class HomeAPI {
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<Home>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<Car>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "PATCH", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
 
-     - parameter _id: (path) A unique integer value identifying this home model. 
-     - parameter title2: (form)  (optional)
-     - parameter _description2: (form)  (optional)
+     - parameter _id: (path) A unique integer value identifying this car sale.
+     - parameter brand2: (form)  (optional)
+     - parameter specifications2: (form)  (optional)
      - parameter createdAt2: (form)  (optional)
-     - parameter title: (form)  (optional)
-     - parameter _description: (form)  (optional)
+     - parameter brand: (form)  (optional)
+     - parameter specifications: (form)  (optional)
      - parameter createdAt: (form)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func homePartialUpdate(_id: Int, title2: String? = nil, _description2: String? = nil, createdAt2: Date? = nil, title: String? = nil, _description: String? = nil, createdAt: Date? = nil, completion: @escaping ((_ data: Home?,_ error: Error?) -> Void)) {
-        homePartialUpdateWithRequestBuilder(_id: _id, title2: title2, _description2: _description2, createdAt2: createdAt2, title: title, _description: _description, createdAt: createdAt).execute { (response, error) -> Void in
+    open class func homePartialUpdate(_id: Int, brand2: String? = nil, specifications2: String? = nil, createdAt2: Date? = nil, brand: String? = nil, specifications: String? = nil, createdAt: Date? = nil, completion: @escaping ((_ data: Car?,_ error: Error?) -> Void)) {
+        homePartialUpdateWithRequestBuilder(_id: _id, brand2: brand2, specifications2: specifications2, createdAt2: createdAt2, brand: brand, specifications: specifications, createdAt: createdAt).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -281,21 +317,21 @@ open class HomeAPI {
        - type: apiKey sessionid (QUERY)
        - name: cookieAuth
      - examples: [{contentType=application/json, example={
-  "description" : "description",
-  "created_at" : "2000-01-23T04:56:07.000+00:00",
-  "title" : "title"
+  "created_at" : "2000-01-23",
+  "brand" : "brand",
+  "specifications" : "specifications"
 }}]
-     - parameter _id: (path) A unique integer value identifying this home model. 
-     - parameter title2: (form)  (optional)
-     - parameter _description2: (form)  (optional)
+     - parameter _id: (path) A unique integer value identifying this car sale.
+     - parameter brand2: (form)  (optional)
+     - parameter specifications2: (form)  (optional)
      - parameter createdAt2: (form)  (optional)
-     - parameter title: (form)  (optional)
-     - parameter _description: (form)  (optional)
+     - parameter brand: (form)  (optional)
+     - parameter specifications: (form)  (optional)
      - parameter createdAt: (form)  (optional)
 
-     - returns: RequestBuilder<Home> 
+     - returns: RequestBuilder<Car>
      */
-    open class func homePartialUpdateWithRequestBuilder(_id: Int, title2: String? = nil, _description2: String? = nil, createdAt2: Date? = nil, title: String? = nil, _description: String? = nil, createdAt: Date? = nil) -> RequestBuilder<Home> {
+    open class func homePartialUpdateWithRequestBuilder(_id: Int, brand2: String? = nil, specifications2: String? = nil, createdAt2: Date? = nil, brand: String? = nil, specifications: String? = nil, createdAt: Date? = nil) -> RequestBuilder<Car> {
         var path = "/home/{id}/"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -305,17 +341,55 @@ open class HomeAPI {
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<Home>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<Car>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "PATCH", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
+    /**
+
+     - parameter _id: (path) A unique integer value identifying this car sale.
+     - parameter brand2: (form)  (optional)
+     - parameter specifications2: (form)  (optional)
+     - parameter createdAt2: (form)  (optional)
+     - parameter brand: (form)  (optional)
+     - parameter specifications: (form)  (optional)
+     - parameter createdAt: (form)  (optional)
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+
+
+
+    /**
+     - PATCH /home/{id}/
+
+     - BASIC:
+       - type: http
+       - name: basicAuth
+     - API Key:
+       - type: apiKey sessionid (QUERY)
+       - name: cookieAuth
+     - examples: [{contentType=application/json, example={
+  "created_at" : "2000-01-23",
+  "brand" : "brand",
+  "specifications" : "specifications"
+}}]
+     - parameter _id: (path) A unique integer value identifying this car sale.
+     - parameter brand2: (form)  (optional)
+     - parameter specifications2: (form)  (optional)
+     - parameter createdAt2: (form)  (optional)
+     - parameter brand: (form)  (optional)
+     - parameter specifications: (form)  (optional)
+     - parameter createdAt: (form)  (optional)
+
+     - returns: RequestBuilder<Car>
+     */
 
     /**
 
-     - parameter _id: (path) A unique integer value identifying this home model. 
+     - parameter _id: (path) A unique integer value identifying this car sale.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func homeRetrieve(_id: Int, completion: @escaping ((_ data: Home?,_ error: Error?) -> Void)) {
+    open class func homeRetrieve(_id: Int, completion: @escaping ((_ data: Car?,_ error: Error?) -> Void)) {
         homeRetrieveWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -332,15 +406,15 @@ open class HomeAPI {
        - type: apiKey sessionid (QUERY)
        - name: cookieAuth
      - examples: [{contentType=application/json, example={
-  "description" : "description",
-  "created_at" : "2000-01-23T04:56:07.000+00:00",
-  "title" : "title"
+  "created_at" : "2000-01-23",
+  "brand" : "brand",
+  "specifications" : "specifications"
 }}]
-     - parameter _id: (path) A unique integer value identifying this home model. 
+     - parameter _id: (path) A unique integer value identifying this car sale.
 
-     - returns: RequestBuilder<Home> 
+     - returns: RequestBuilder<Car>
      */
-    open class func homeRetrieveWithRequestBuilder(_id: Int) -> RequestBuilder<Home> {
+    open class func homeRetrieveWithRequestBuilder(_id: Int) -> RequestBuilder<Car> {
         var path = "/home/{id}/"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -350,17 +424,17 @@ open class HomeAPI {
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<Home>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<Car>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
 
-     - parameter body: (body)  
-     - parameter _id: (path) A unique integer value identifying this home model. 
+     - parameter body: (body)
+     - parameter _id: (path) A unique integer value identifying this car sale.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func homeUpdate(body: Home, _id: Int, completion: @escaping ((_ data: Home?,_ error: Error?) -> Void)) {
+    open class func homeUpdate(body: Car, _id: Int, completion: @escaping ((_ data: Car?,_ error: Error?) -> Void)) {
         homeUpdateWithRequestBuilder(body: body, _id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -377,16 +451,16 @@ open class HomeAPI {
        - type: apiKey sessionid (QUERY)
        - name: cookieAuth
      - examples: [{contentType=application/json, example={
-  "description" : "description",
-  "created_at" : "2000-01-23T04:56:07.000+00:00",
-  "title" : "title"
+  "created_at" : "2000-01-23",
+  "brand" : "brand",
+  "specifications" : "specifications"
 }}]
-     - parameter body: (body)  
-     - parameter _id: (path) A unique integer value identifying this home model. 
+     - parameter body: (body)
+     - parameter _id: (path) A unique integer value identifying this car sale.
 
-     - returns: RequestBuilder<Home> 
+     - returns: RequestBuilder<Car>
      */
-    open class func homeUpdateWithRequestBuilder(body: Home, _id: Int) -> RequestBuilder<Home> {
+    open class func homeUpdateWithRequestBuilder(body: Car, _id: Int) -> RequestBuilder<Car> {
         var path = "/home/{id}/"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -396,23 +470,23 @@ open class HomeAPI {
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<Home>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<Car>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
 
-     - parameter title2: (form)  
-     - parameter _description2: (form)  
-     - parameter createdAt2: (form)  
-     - parameter title: (form)  
-     - parameter _description: (form)  
-     - parameter createdAt: (form)  
-     - parameter _id: (path) A unique integer value identifying this home model. 
+     - parameter brand2: (form)
+     - parameter specifications2: (form)
+     - parameter createdAt2: (form)
+     - parameter brand: (form)
+     - parameter specifications: (form)
+     - parameter createdAt: (form)
+     - parameter _id: (path) A unique integer value identifying this car sale.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func homeUpdate(title2: String, _description2: String, createdAt2: Date, title: String, _description: String, createdAt: Date, _id: Int, completion: @escaping ((_ data: Home?,_ error: Error?) -> Void)) {
-        homeUpdateWithRequestBuilder(title2: title2, _description2: _description2, createdAt2: createdAt2, title: title, _description: _description, createdAt: createdAt, _id: _id).execute { (response, error) -> Void in
+    open class func homeUpdate(brand2: String, specifications2: String, createdAt2: Date, brand: String, specifications: String, createdAt: Date, _id: Int, completion: @escaping ((_ data: Car?,_ error: Error?) -> Void)) {
+        homeUpdateWithRequestBuilder(brand2: brand2, specifications2: specifications2, createdAt2: createdAt2, brand: brand, specifications: specifications, createdAt: createdAt, _id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -428,21 +502,21 @@ open class HomeAPI {
        - type: apiKey sessionid (QUERY)
        - name: cookieAuth
      - examples: [{contentType=application/json, example={
-  "description" : "description",
-  "created_at" : "2000-01-23T04:56:07.000+00:00",
-  "title" : "title"
+  "created_at" : "2000-01-23",
+  "brand" : "brand",
+  "specifications" : "specifications"
 }}]
-     - parameter title2: (form)  
-     - parameter _description2: (form)  
-     - parameter createdAt2: (form)  
-     - parameter title: (form)  
-     - parameter _description: (form)  
-     - parameter createdAt: (form)  
-     - parameter _id: (path) A unique integer value identifying this home model. 
+     - parameter brand2: (form)
+     - parameter specifications2: (form)
+     - parameter createdAt2: (form)
+     - parameter brand: (form)
+     - parameter specifications: (form)
+     - parameter createdAt: (form)
+     - parameter _id: (path) A unique integer value identifying this car sale.
 
-     - returns: RequestBuilder<Home> 
+     - returns: RequestBuilder<Car>
      */
-    open class func homeUpdateWithRequestBuilder(title2: String, _description2: String, createdAt2: Date, title: String, _description: String, createdAt: Date, _id: Int) -> RequestBuilder<Home> {
+    open class func homeUpdateWithRequestBuilder(brand2: String, specifications2: String, createdAt2: Date, brand: String, specifications: String, createdAt: Date, _id: Int) -> RequestBuilder<Car> {
         var path = "/home/{id}/"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -452,12 +526,47 @@ open class HomeAPI {
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<Home>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
-        
+        let requestBuilder: RequestBuilder<Car>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
         return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
-    
-    
-    
-    
+    /**
+
+     - parameter brand2: (form)
+     - parameter specifications2: (form)
+     - parameter createdAt2: (form)
+     - parameter brand: (form)
+     - parameter specifications: (form)
+     - parameter createdAt: (form)
+     - parameter _id: (path) A unique integer value identifying this car sale.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+
+
+
+    /**
+     - PUT /home/{id}/
+
+     - BASIC:
+       - type: http
+       - name: basicAuth
+     - API Key:
+       - type: apiKey sessionid (QUERY)
+       - name: cookieAuth
+     - examples: [{contentType=application/json, example={
+  "created_at" : "2000-01-23",
+  "brand" : "brand",
+  "specifications" : "specifications"
+}}]
+     - parameter brand2: (form)
+     - parameter specifications2: (form)
+     - parameter createdAt2: (form)
+     - parameter brand: (form)
+     - parameter specifications: (form)
+     - parameter createdAt: (form)
+     - parameter _id: (path) A unique integer value identifying this car sale.
+
+     - returns: RequestBuilder<Car>
+     */
+
 }
