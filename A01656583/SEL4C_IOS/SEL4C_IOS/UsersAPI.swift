@@ -159,8 +159,8 @@ open class UsersAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     open class func usersList(page: Int? = nil, completion: @escaping ((_ data: PaginatedUserList?,_ error: Error?) -> Void)) {
-        let username = "A00XXXXXX"
-        let password = "password"
+        let username = "A01656583"
+        let password = "4atardeceres$(ROJOS"
         let loginString = "\(username):\(password)"
         let loginData = loginString.data(using: .utf8)!
         let base64LoginString = loginData.base64EncodedString()
